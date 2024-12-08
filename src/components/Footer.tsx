@@ -12,11 +12,21 @@ import Image from "next/image";
 function Footer() {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    // Handle form submission logic here
-    console.log("Email submitted:", email);
-  };
+  // const handleSubmit = (event: unknown) => {
+  //   event.preventDefault();
+  //   // Handle form submission logic here
+  //   console.log("Email submitted:", email);
+  // };
+
+  function handleSubmit(event: unknown) {
+    // Type guard to check if it's a MouseEvent
+    if (event instanceof MouseEvent) {
+      console.log(event.clientX, event.clientY);  // Now TypeScript knows it's a MouseEvent
+    } else {
+      console.log("Email submitted");
+    }
+  }
+  
 
   return (
     <div className="absolute w-[1927px] h-[418px] left-[-12px] top-[4480px] bg-white shadow-lg border-t-4 border-gray-200">
